@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="GroceryItem" load_steps=5 format=3 uid="uid://c03nbv30toujt"]
+
+[ext_resource type="Script" uid="uid://nekho0463t1a" path="res://scripts/grocery_item.gd" id="1_22rk5"]
+[ext_resource type="Script" uid="uid://bgauh1hncl0rg" path="res://scripts/RowTile.gd" id="2_nsdeo"]
+
+[sub_resource type="Resource" id="Resource_m2vgp"]
+script = ExtResource("2_nsdeo")
+tile_left = Vector2i(2, 0)
+tile_right = Vector2i(3, 0)
+metadata/_custom_type_script = "uid://bgauh1hncl0rg"
+
+[sub_resource type="Resource" id="Resource_se4ft"]
+script = ExtResource("2_nsdeo")
+tile_left = Vector2i(2, 1)
+tile_right = Vector2i(3, 1)
+metadata/_custom_type_script = "uid://bgauh1hncl0rg"
+
+[resource]
+script = ExtResource("1_22rk5")
+tiles = Array[ExtResource("2_nsdeo")]([SubResource("Resource_m2vgp"), SubResource("Resource_se4ft")])
+metadata/_custom_type_script = "uid://nekho0463t1a"
