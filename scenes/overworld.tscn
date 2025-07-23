@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=3 uid="uid://bnt11gqa36w6f"]
+
+[ext_resource type="PackedScene" uid="uid://5pm3v83tw31q" path="res://objects/player.tscn" id="1_m1b5j"]
+[ext_resource type="Script" uid="uid://bb5aau0fedosc" path="res://scripts/player.gd" id="2_16ktt"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_3gvrs"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_eab5i"]
+[ext_resource type="Script" uid="uid://dilgy1qpevj0t" path="res://scripts/pedometer.gd" id="4_fkyvp"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_fkyvp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3gvrs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3gvrs"]
+font_size = 20
+
+[sub_resource type="Resource" id="Resource_qjxaj"]
+script = ExtResource("5_fkyvp")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Gradient" id="Gradient_3gvrs"]
+colors = PackedColorArray(0.0398984, 0.219007, 0.151582, 1, 0.249724, 0.447053, 0.270758, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_eab5i"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fkyvp"]
+width = 1024
+height = 1024
+color_ramp = SubResource("Gradient_3gvrs")
+noise = SubResource("FastNoiseLite_eab5i")
+
+[node name="Overworld" type="Node2D"]
+
+[node name="Player" parent="." node_paths=PackedStringArray("pedometer") instance=ExtResource("1_m1b5j")]
+z_index = 1
+script = ExtResource("2_16ktt")
+pedometer = NodePath("../Camera2D/Pedometer_Container/Pedometer")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+process_callback = 0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("3_3gvrs")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="Pedometer_Container" type="PanelContainer" parent="Camera2D"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 299.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = -272.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3gvrs")
+
+[node name="Pedometer" type="Label" parent="Camera2D/Pedometer_Container"]
+layout_mode = 2
+text = "Pedometer: 999,999"
+label_settings = SubResource("LabelSettings_3gvrs")
+script = ExtResource("4_fkyvp")
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+script = ExtResource("4_eab5i")
+follow_mode = 5
+follow_target = NodePath("../Player")
+tween_resource = SubResource("Resource_qjxaj")
+follow_damping = true
+dead_zone_width = 0.08
+dead_zone_height = 0.08
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="TempBG" type="Sprite2D" parent="."]
+z_index = -999
+scale = Vector2(5, 5)
+texture = SubResource("NoiseTexture2D_fkyvp")

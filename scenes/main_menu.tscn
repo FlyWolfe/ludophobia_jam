@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsc50bt0stal3"]
+
+[ext_resource type="Script" uid="uid://craycx0wfka8d" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vue75"]
+font_size = 64
+
+[node name="Node2D" type="Node2D"]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ludo Game Name"
+label_settings = SubResource("LabelSettings_vue75")
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 40
+text = "Play"
+
+[node name="TempGroceryButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 40
+text = "Grocery"
+
+[node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/PlayButton" to="PanelContainer" method="_on_play_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TempGroceryButton" to="PanelContainer" method="_on_temp_grocery_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/QuitButton" to="PanelContainer" method="_on_quit_button_pressed"]

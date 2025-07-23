@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://5pm3v83tw31q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxedw"]
+radius = 16.0
+height = 64.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bxedw"]
+size = Vector2(32, 64)
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bxedw")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="CharacterSprite" type="Sprite2D" parent="Visuals"]
+texture = SubResource("PlaceholderTexture2D_bxedw")
