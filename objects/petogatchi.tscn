@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://brkxoqdvu1nup"]
+[gd_scene load_steps=13 format=3 uid="uid://brkxoqdvu1nup"]
 
 [ext_resource type="Texture2D" uid="uid://cwcqp8lkivojh" path="res://sprites/Rezbow Angry.png" id="1_40dtv"]
 [ext_resource type="Script" uid="uid://72558akikcuw" path="res://scripts/pet/petogatchi.gd" id="1_nhpe2"]
@@ -11,6 +11,67 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_40dtv"]
 font_size = 20
+
+[sub_resource type="Animation" id="Animation_8i37g"]
+resource_name = "head_bob"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/HBoxContainer/Control/HeadTexture:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(41, 11), Vector2(31, 17), Vector2(41, 11), Vector2(48, 13), Vector2(41, 11)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/HBoxContainer/Control/HeadTexture:rotation")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0, 0.0872665, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_j3ak1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/HBoxContainer/Control/HeadTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(41, 11)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/HBoxContainer/Control/HeadTexture:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hsklg"]
+_data = {
+&"RESET": SubResource("Animation_j3ak1"),
+&"head_bob": SubResource("Animation_8i37g")
+}
 
 [node name="Petogatchi" type="PanelContainer" node_paths=PackedStringArray("texture_rect", "label")]
 anchors_preset = 3
@@ -43,21 +104,23 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "-------
 Feed
 Shadey
 -------"
 
 [node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(1200, 1500)
+custom_minimum_size = Vector2(150, 200)
 layout_mode = 2
 
 [node name="BodyTexture" type="TextureRect" parent="VBoxContainer/HBoxContainer/Control"]
 layout_mode = 2
-offset_top = 210.025
-offset_right = 1300.0
-offset_bottom = 1430.03
+offset_left = -15.0
+offset_top = 45.0
+offset_right = 1285.0
+offset_bottom = 1265.01
+scale = Vector2(0.15, 0.15)
 size_flags_horizontal = 4
 size_flags_vertical = 8
 texture = ExtResource("5_y1mkc")
@@ -65,30 +128,21 @@ stretch_mode = 5
 
 [node name="HeadTexture" type="TextureRect" parent="VBoxContainer/HBoxContainer/Control"]
 layout_mode = 2
-offset_left = 359.0
-offset_top = 36.0
-offset_right = 871.0
-offset_bottom = 546.0
+offset_left = 41.0
+offset_top = 11.0
+offset_right = 553.0
+offset_bottom = 521.0
+scale = Vector2(0.15, 0.15)
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("1_40dtv")
 stretch_mode = 5
 
-[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-drag_area_highlight_in_editor = true
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-alignment_horizontal = 0
-
 [node name="FeedButton2" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 20
 text = "-------
 Feed
 Shadey
@@ -101,6 +155,13 @@ text = "Hey, I'm saying something, biiiiitch!"
 label_settings = SubResource("LabelSettings_40dtv")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hsklg")
+}
+autoplay = "head_bob"
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/FeedButton" to="." method="_on_feed_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/FeedButton2" to="." method="_on_feed_button_pressed"]

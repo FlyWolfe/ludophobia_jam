@@ -59,11 +59,10 @@ label_settings = SubResource("LabelSettings_3gvrs")
 script = ExtResource("4_fkyvp")
 
 [node name="Petogatchi" parent="CanvasLayer" instance=ExtResource("7_fkyvp")]
-offset_left = -434.0
-offset_top = -367.0
-offset_right = 1174.0
-offset_bottom = 1007.0
-scale = Vector2(0.25, 0.25)
+offset_left = -360.0
+offset_top = -392.0
+offset_right = -44.0
+offset_bottom = -38.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
