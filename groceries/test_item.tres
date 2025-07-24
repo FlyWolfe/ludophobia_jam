@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="GroceryItem" load_steps=6 format=3 uid="uid://b1iq0vdplebiq"]
 
-[ext_resource type="Script" uid="uid://nekho0463t1a" path="res://scripts/grocery_item.gd" id="1_u32ge"]
-[ext_resource type="Script" uid="uid://bgauh1hncl0rg" path="res://scripts/RowTile.gd" id="2_m2vgp"]
+[ext_resource type="Script" uid="uid://nekho0463t1a" path="res://scripts/grocery_store/grocery_item.gd" id="1_u32ge"]
+[ext_resource type="Script" uid="uid://bgauh1hncl0rg" path="res://scripts/grocery_store/RowTile.gd" id="2_m2vgp"]
 
 [sub_resource type="Resource" id="Resource_m2vgp"]
 script = ExtResource("2_m2vgp")

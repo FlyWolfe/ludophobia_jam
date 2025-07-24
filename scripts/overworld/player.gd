@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var pedometer: Label
 @export var distance_per_step: float = 100
@@ -10,6 +11,7 @@ var cumulative_distance: float = 0.0
 
 func _ready() -> void:
 	last_pos = position
+	Globals.player = self
 
 func _physics_process(delta: float) -> void:
 	var vel: Vector2 = Vector2.ZERO
