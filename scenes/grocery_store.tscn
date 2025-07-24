@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://cy78wfakc5bms"]
+[gd_scene load_steps=7 format=4 uid="uid://cy78wfakc5bms"]
 
 [ext_resource type="Script" uid="uid://bbwnwvvk51y7y" path="res://scripts/grocery_store/conveyor_belt.gd" id="1_v33jl"]
 [ext_resource type="Script" uid="uid://nekho0463t1a" path="res://scripts/grocery_store/grocery_item.gd" id="2_p4v1b"]
-[ext_resource type="Resource" uid="uid://b1iq0vdplebiq" path="res://groceries/test_item.tres" id="3_biarb"]
-[ext_resource type="Resource" uid="uid://c03nbv30toujt" path="res://groceries/other_item.tres" id="4_5dc52"]
+[ext_resource type="Resource" uid="uid://b1iq0vdplebiq" path="res://groceries/test_item.tres" id="3_5dc52"]
+[ext_resource type="Resource" uid="uid://c03nbv30toujt" path="res://groceries/other_item.tres" id="4_k6thg"]
 [ext_resource type="TileSet" uid="uid://cyolmvusjtm8k" path="res://groceries/tileset.tres" id="5_5dc52"]
+[ext_resource type="Resource" uid="uid://bhx3ffygre6i0" path="res://groceries/backwards_c.tres" id="5_mkny6"]
 
 [node name="GroceryStore" type="Node2D"]
 
@@ -12,9 +13,10 @@
 
 [node name="ConveyorBelt" type="Node2D" parent="." node_paths=PackedStringArray("conveyor_map", "placing_map")]
 script = ExtResource("1_v33jl")
+all_tiles = Array[ExtResource("2_p4v1b")]([ExtResource("3_5dc52"), ExtResource("4_k6thg"), ExtResource("5_mkny6")])
+amount_of_tile = Array[int]([10, 10, 5])
 conveyor_map = NodePath("ConveyorTileMapLayer")
 placing_map = NodePath("PlacingTileMapLayer2")
-grocery_items = Array[ExtResource("2_p4v1b")]([ExtResource("3_biarb"), ExtResource("4_5dc52")])
 
 [node name="ConveyorTileMapLayer" type="TileMapLayer" parent="ConveyorBelt"]
 scale = Vector2(6, 6)

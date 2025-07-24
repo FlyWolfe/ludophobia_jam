@@ -1,25 +1,26 @@
 extends Node2D
 
-class GridSpace:
-	var occupied: bool
-	var placed_item_index: int
-
 @export var starting_columns: int = 2
+@export var max_columns: int = 30
+@export var all_tiles: Array[GroceryItem]
+@export var amount_of_tile: Array[int]
 @export var conveyor_start: Vector2i = Vector2i(-9, -2)
 @export var conveyor_end: Vector2i = Vector2i(8, 1)
 
 @export var conveyor_map: TileMapLayer
 @export var placing_map: TileMapLayer
 
-@export var grocery_items: Array[GroceryItem]
 @export var x_tile: Vector2i = Vector2i(7, 5)
 
-@export var conveyor_move_rate: float = 2.0
+@export var conveyor_move_rate: float = 0.5
 
 var columns: int
 var rows: int
 var available_columns: int
+var columns_left: int
+var grocery_items: Array[GroceryItem]
 var current_item: GroceryItem
+var game_end: bool
 
 enum Rot {
 	Normal,
@@ -36,11 +37,24 @@ func _ready():
 	columns = conveyor_end.x - conveyor_start.x
 	rows = conveyor_end.y - conveyor_start.y
 	available_columns = starting_columns
-	current_item = grocery_items.pick_random()
+	columns_left = max_columns
+	game_end = false
+	
+	for i in range(all_tiles.size()):
+		for j in range(amount_of_tile[i]):
+			grocery_items.append(all_tiles[i])
+			print("TADA")
+	var rand_index = randi() % grocery_items.size()
+	current_item = grocery_items[rand_index]
+	grocery_items.remove_at(rand_index)
+	
 	timer = conveyor_move_rate
 	tile_rotation = Rot.Normal
 
 func _process(delta: float) -> void:
+	if game_end:
+		return
+	
 	var place = Input.is_action_just_released("place")
 	if !place:
 		if Input.is_action_just_pressed("left"):
@@ -75,7 +89,13 @@ func _process(delta: float) -> void:
 		if can_place(tiles_to_place):
 			for tile in tiles_to_place:
 				place(Vector2i(tile.x, tile.y), Vector2i(tile.z, tile.w))
-			current_item = grocery_items.pick_random()
+			if grocery_items.size() > 0:
+				var rand_index = randi() % grocery_items.size()
+				current_item = grocery_items[rand_index]
+				grocery_items.remove_at(rand_index)
+			else:
+				current_item = null
+				game_end = true
 	
 	timer -= delta
 	if timer <= 0.0:
@@ -104,7 +124,7 @@ func rotate_tile_right():
 		Rot.Left:
 			tile_rotation = Rot.Normal
 
-func get_tile_map_pos(mouse_pos: Vector2i, row: int, is_left_tile: bool):
+func get_tile_map_pos(mouse_pos: Vector2i, row: int, is_left_tile: bool) -> Vector2i:
 	var map_pos = mouse_pos
 	match tile_rotation:
 		Rot.Normal:
@@ -166,10 +186,12 @@ func place(pos: Vector2i, tile_coords: Vector2i):
 	conveyor_map.set_cell(pos, 0, tile_coords)
 
 func move_conveyor():
-	if available_columns > columns:
+	if columns_left <= 0:
 		return
-	 
-	available_columns += 1
+	columns_left -= 1
+	if available_columns <= columns:
+		available_columns += 1
+	
 	for i in range(conveyor_end.x, conveyor_start.x - 1, -1):
 		for j in range(conveyor_end.y, conveyor_start.y - 1, -1):
 			var tile_to_left = Vector2i(-1, -1)

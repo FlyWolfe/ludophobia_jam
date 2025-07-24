@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsc50bt0stal3"]
+[gd_scene load_steps=4 format=3 uid="uid://bsc50bt0stal3"]
 
+[ext_resource type="Script" uid="uid://cvjdvhg7d1y8q" path="res://scripts/main.gd" id="1_ekxnf"]
 [ext_resource type="Script" uid="uid://craycx0wfka8d" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vue75"]
 font_size = 64
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_ekxnf")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15

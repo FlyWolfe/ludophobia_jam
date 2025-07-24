@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PetDialogue" load_steps=3 format=3 uid="uid://b4jan3wt0owu0"]
+
+[ext_resource type="Texture2D" uid="uid://cejj4voiqbf5" path="res://sprites/Rezbow Neutral.png" id="1_dqkjb"]
+[ext_resource type="Script" uid="uid://cra3t8cbmwdq8" path="res://scripts/pet/pet_dialogue.gd" id="1_rmw5t"]
+
+[resource]
+script = ExtResource("1_rmw5t")
+text = "Hey Dad, I'm hungry! Feed me!"
+steps = 5
+image = ExtResource("1_dqkjb")
+metadata/_custom_type_script = "uid://cra3t8cbmwdq8"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PetDialogue" load_steps=3 format=3 uid="uid://p31l4v2h1fqi"]
+
+[ext_resource type="Texture2D" uid="uid://c0sme7cq5x73r" path="res://sprites/Rezbow sad.png" id="1_aefop"]
+[ext_resource type="Script" uid="uid://cra3t8cbmwdq8" path="res://scripts/pet/pet_dialogue.gd" id="2_6lja2"]
+
+[resource]
+script = ExtResource("2_6lja2")
+text = "Oh no, that man looks like he wants to touch me..."
+steps = 100
+image = ExtResource("1_aefop")
+metadata/_custom_type_script = "uid://cra3t8cbmwdq8"

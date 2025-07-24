@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PetDialogue" load_steps=3 format=3 uid="uid://bbk8r2h151a70"]
+
+[ext_resource type="Texture2D" uid="uid://b4h621kwkldmd" path="res://sprites/Rezbow silly.png" id="1_r0p5j"]
+[ext_resource type="Script" uid="uid://cra3t8cbmwdq8" path="res://scripts/pet/pet_dialogue.gd" id="2_ylvie"]
+
+[resource]
+script = ExtResource("2_ylvie")
+text = "Hyuck Hyuck!"
+steps = 20
+image = ExtResource("1_r0p5j")
+metadata/_custom_type_script = "uid://cra3t8cbmwdq8"
