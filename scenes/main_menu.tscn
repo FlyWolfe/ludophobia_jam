@@ -40,6 +40,12 @@ size_flags_vertical = 6
 theme_override_font_sizes/font_size = 40
 text = "Grocery"
 
+[node name="TempSideButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 40
+text = "Grocery"
+
 [node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
@@ -48,4 +54,5 @@ text = "Quit"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PlayButton" to="PanelContainer" method="_on_play_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TempGroceryButton" to="PanelContainer" method="_on_temp_grocery_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TempSideButton" to="PanelContainer" method="_on_temp_side_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/QuitButton" to="PanelContainer" method="_on_quit_button_pressed"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmbr47pgax2ck"]
+
+[ext_resource type="Texture2D" uid="uid://ctcbl3wq6pbcu" path="res://sprites/square.png" id="1_hcgd3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcgd3"]
+size = Vector2(50, 50)
+
+[node name="EggGrass" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.472775, 0.56616, 0.299315, 1)
+z_index = 2
+scale = Vector2(5, 5)
+texture = ExtResource("1_hcgd3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_hcgd3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_hcgd3")

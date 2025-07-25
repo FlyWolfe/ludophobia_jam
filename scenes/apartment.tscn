@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://f74rxi2uscj8"]
+
+[ext_resource type="PackedScene" uid="uid://4oe1dn58r0h6" path="res://objects/player_side.tscn" id="1_xl163"]
+[ext_resource type="Texture2D" uid="uid://ctcbl3wq6pbcu" path="res://sprites/square.png" id="3_jq6rh"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_2wpg1"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_wsv48"]
+[ext_resource type="PackedScene" uid="uid://dfaws67s7rdie" path="res://objects/crack.tscn" id="6_2wpg1"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_5ql8h"]
+[ext_resource type="Script" uid="uid://78stfv0t4dnj" path="res://scripts/sidescrolling/go_to_overworld.gd" id="7_wsv48"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfxcn"]
+size = Vector2(8010, 160)
+
+[sub_resource type="Resource" id="Resource_2wpg1"]
+script = ExtResource("6_5ql8h")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wpg1"]
+size = Vector2(500, 500)
+
+[node name="Apartment" type="Node2D"]
+
+[node name="PlayerSide" parent="." instance=ExtResource("1_xl163")]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Bottom" type="Node2D" parent="World"]
+position = Vector2(0, 213)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Bottom"]
+position = Vector2(5, 80)
+scale = Vector2(500, 10)
+texture = ExtResource("3_jq6rh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/Bottom"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Bottom/StaticBody2D"]
+position = Vector2(0, 80)
+shape = SubResource("RectangleShape2D_xfxcn")
+
+[node name="Top" type="Node2D" parent="World"]
+position = Vector2(0, -288)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Top"]
+position = Vector2(5, 80)
+scale = Vector2(500, 10)
+texture = ExtResource("3_jq6rh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/Top"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Top/StaticBody2D"]
+position = Vector2(0, 80)
+shape = SubResource("RectangleShape2D_xfxcn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+position = Vector2(0, -169.215)
+process_callback = 0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("4_2wpg1")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(0, -169.215)
+script = ExtResource("5_wsv48")
+follow_mode = 5
+follow_target = NodePath("../PlayerSide")
+tween_resource = SubResource("Resource_2wpg1")
+follow_offset = Vector2(0, -169.215)
+follow_damping = true
+dead_zone_width = 0.08
+dead_zone_height = 0.08
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="crack" parent="." instance=ExtResource("6_2wpg1")]
+position = Vector2(339, -78)
+
+[node name="crack2" parent="." instance=ExtResource("6_2wpg1")]
+position = Vector2(534, 143)
+
+[node name="crack3" parent="." instance=ExtResource("6_2wpg1")]
+position = Vector2(664, -71)
+
+[node name="crack4" parent="." instance=ExtResource("6_2wpg1")]
+position = Vector2(899, 50)
+
+[node name="crack5" parent="." instance=ExtResource("6_2wpg1")]
+position = Vector2(1345, 1)
+
+[node name="GoToOverworld" type="Node2D" parent="."]
+position = Vector2(3489, 0)
+script = ExtResource("7_wsv48")
+
+[node name="Area2D" type="Area2D" parent="GoToOverworld"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoToOverworld/Area2D"]
+shape = SubResource("RectangleShape2D_2wpg1")
+
+[connection signal="body_entered" from="GoToOverworld/Area2D" to="GoToOverworld" method="_on_area_2d_body_entered"]

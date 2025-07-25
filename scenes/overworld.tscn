@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bnt11gqa36w6f"]
+[gd_scene load_steps=17 format=3 uid="uid://bnt11gqa36w6f"]
 
 [ext_resource type="PackedScene" uid="uid://5pm3v83tw31q" path="res://objects/player.tscn" id="1_m1b5j"]
 [ext_resource type="Script" uid="uid://bb5aau0fedosc" path="res://scripts/overworld/player.gd" id="2_16ktt"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_fkyvp"]
 [ext_resource type="PackedScene" uid="uid://brkxoqdvu1nup" path="res://objects/petogatchi.tscn" id="7_fkyvp"]
 [ext_resource type="Texture2D" uid="uid://ctcbl3wq6pbcu" path="res://sprites/square.png" id="8_qjxaj"]
+[ext_resource type="PackedScene" uid="uid://bmbr47pgax2ck" path="res://objects/egg_grass.tscn" id="9_e184d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3gvrs"]
 
@@ -103,3 +104,29 @@ shape = SubResource("RectangleShape2D_qjxaj")
 [node name="Sprite2D" type="Sprite2D" parent="WorldObjects/HouseTemp2"]
 scale = Vector2(20, 20)
 texture = ExtResource("8_qjxaj")
+
+[node name="Egg Hunt" type="Node2D" parent="WorldObjects"]
+
+[node name="EggGrass" parent="WorldObjects/Egg Hunt" instance=ExtResource("9_e184d")]
+position = Vector2(-765, -394)
+
+[node name="EggGrass2" parent="WorldObjects/Egg Hunt" instance=ExtResource("9_e184d")]
+position = Vector2(-484, -413)
+
+[node name="EggGrass3" parent="WorldObjects/Egg Hunt" instance=ExtResource("9_e184d")]
+position = Vector2(-795, -121)
+
+[node name="EggGrass4" parent="WorldObjects/Egg Hunt" instance=ExtResource("9_e184d")]
+position = Vector2(-611, -250)
+
+[node name="EggGrass5" parent="WorldObjects/Egg Hunt" instance=ExtResource("9_e184d")]
+position = Vector2(-635, -119)
+
+[node name="EggGrass6" parent="WorldObjects/Egg Hunt" instance=ExtResource("9_e184d")]
+position = Vector2(-397, -293)
+
+[node name="EggGrass7" parent="WorldObjects/Egg Hunt" instance=ExtResource("9_e184d")]
+position = Vector2(-635, -490)
+
+[node name="EggGrass8" parent="WorldObjects/Egg Hunt" instance=ExtResource("9_e184d")]
+position = Vector2(-871, -261)
