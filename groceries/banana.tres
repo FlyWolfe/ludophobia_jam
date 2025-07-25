@@ -24,5 +24,6 @@ metadata/_custom_type_script = "uid://bgauh1hncl0rg"
 [resource]
 script = ExtResource("1_movfr")
 tiles = Array[ExtResource("2_kiaxs")]([SubResource("Resource_m2vgp"), SubResource("Resource_se4ft"), SubResource("Resource_6mpdc")])
+amount_to_buy = 3
 name = "banana"
 metadata/_custom_type_script = "uid://nekho0463t1a"

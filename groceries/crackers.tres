@@ -18,5 +18,6 @@ metadata/_custom_type_script = "uid://bgauh1hncl0rg"
 [resource]
 script = ExtResource("1_833rv")
 tiles = Array[ExtResource("2_f62dr")]([SubResource("Resource_m2vgp"), SubResource("Resource_se4ft")])
+amount_to_buy = 6
 name = "crackers"
 metadata/_custom_type_script = "uid://nekho0463t1a"

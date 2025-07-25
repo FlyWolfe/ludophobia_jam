@@ -39,7 +39,8 @@ func _ready():
 	game_end = false
 	
 	for i in range(Globals.groceries.size()):
-		grocery_items.append(Globals.groceries[i])
+		for j in range(Globals.groceries[i].amount_to_buy):
+			grocery_items.append(Globals.groceries[i])
 	var rand_index = randi() % grocery_items.size()
 	current_item = grocery_items[rand_index]
 	grocery_items.remove_at(rand_index)
