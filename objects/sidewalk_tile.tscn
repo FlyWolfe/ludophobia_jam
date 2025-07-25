@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://bumw5oacwgp7c"]
+
+[ext_resource type="Texture2D" uid="uid://cmxkvgbcx0rkc" path="res://sprites/apartmentscene.png" id="1_58mxj"]
+
+[node name="SidewalkTile" type="Node2D"]
+
+[node name="crack_1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-57, 2)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_58mxj")
+region_enabled = true
+region_rect = Rect2(1614.81, 201.457, 392.59, 237.262)
+
+[node name="crack_2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-57, 2)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_58mxj")
+region_enabled = true
+region_rect = Rect2(2000.28, 217.203, 385.903, 241.787)
+
+[node name="crack_3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-57, 2)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_58mxj")
+region_enabled = true
+region_rect = Rect2(1939.79, 498.303, 383.107, 240.096)
+
+[node name="crack_4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-57, 2)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_58mxj")
+region_enabled = true
+region_rect = Rect2(1484.65, 713.48, 395.943, 267.468)
+
+[node name="crack_5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-57, 2)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_58mxj")
+region_enabled = true
+region_rect = Rect2(1892.39, 769.975, 372.728, 277.686)
+
+[node name="crack_6" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-57, 2)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_58mxj")
+region_enabled = true
+region_rect = Rect2(1830, 1063, 411, 254)
+
+[node name="crack_7" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-57, 2)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_58mxj")
+region_enabled = true
+region_rect = Rect2(1798.31, 1383.27, 400, 245.455)
+
+[node name="normal" type="Sprite2D" parent="."]
+position = Vector2(-57, 2)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_58mxj")
+region_enabled = true
+region_rect = Rect2(1558.46, 473.373, 395.527, 245.264)

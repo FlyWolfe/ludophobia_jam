@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://f74rxi2uscj8"]
+[gd_scene load_steps=14 format=3 uid="uid://f74rxi2uscj8"]
 
 [ext_resource type="PackedScene" uid="uid://4oe1dn58r0h6" path="res://objects/player_side.tscn" id="1_xl163"]
 [ext_resource type="Texture2D" uid="uid://ctcbl3wq6pbcu" path="res://sprites/square.png" id="3_jq6rh"]
@@ -7,9 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://dfaws67s7rdie" path="res://objects/crack.tscn" id="6_2wpg1"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_5ql8h"]
 [ext_resource type="Script" uid="uid://78stfv0t4dnj" path="res://scripts/sidescrolling/go_to_overworld.gd" id="7_wsv48"]
+[ext_resource type="PackedScene" uid="uid://bumw5oacwgp7c" path="res://objects/sidewalk_tile.tscn" id="8_5ql8h"]
+[ext_resource type="Texture2D" uid="uid://cmxkvgbcx0rkc" path="res://sprites/apartmentscene.png" id="9_nvk3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfxcn"]
 size = Vector2(8010, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvk3q"]
+size = Vector2(500, 500)
 
 [sub_resource type="Resource" id="Resource_2wpg1"]
 script = ExtResource("6_5ql8h")
@@ -30,6 +35,7 @@ size = Vector2(500, 500)
 position = Vector2(0, 213)
 
 [node name="Sprite2D" type="Sprite2D" parent="World/Bottom"]
+visible = false
 position = Vector2(5, 80)
 scale = Vector2(500, 10)
 texture = ExtResource("3_jq6rh")
@@ -44,6 +50,7 @@ shape = SubResource("RectangleShape2D_xfxcn")
 position = Vector2(0, -288)
 
 [node name="Sprite2D" type="Sprite2D" parent="World/Top"]
+visible = false
 position = Vector2(5, 80)
 scale = Vector2(500, 10)
 texture = ExtResource("3_jq6rh")
@@ -54,9 +61,423 @@ texture = ExtResource("3_jq6rh")
 position = Vector2(0, 80)
 shape = SubResource("RectangleShape2D_xfxcn")
 
+[node name="Home" type="Sprite2D" parent="World"]
+position = Vector2(91, -610)
+scale = Vector2(0.575, 0.575)
+texture = ExtResource("9_nvk3q")
+region_enabled = true
+region_rect = Rect2(97.6566, 0, 1431.66, 1876)
+
+[node name="Tiles" type="Node2D" parent="World"]
+
+[node name="SidewalkTile" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-240, -40)
+
+[node name="SidewalkTile2" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-283, 119)
+
+[node name="crack_3" parent="World/Tiles/SidewalkTile2" index="2"]
+visible = true
+
+[node name="normal" parent="World/Tiles/SidewalkTile2" index="7"]
+visible = false
+
+[node name="SidewalkTile3" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(18, -40)
+
+[node name="SidewalkTile4" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-25, 119)
+
+[node name="SidewalkTile5" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(274, -40)
+
+[node name="SidewalkTile6" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(231, 119)
+
+[node name="SidewalkTile7" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(530, -40)
+
+[node name="crack_7" parent="World/Tiles/SidewalkTile7" index="6"]
+visible = true
+
+[node name="normal" parent="World/Tiles/SidewalkTile7" index="7"]
+visible = false
+
+[node name="SidewalkTile8" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(487, 119)
+
+[node name="crack_1" parent="World/Tiles/SidewalkTile8" index="0"]
+visible = true
+
+[node name="normal" parent="World/Tiles/SidewalkTile8" index="7"]
+visible = false
+
+[node name="SidewalkTile9" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(790, -40)
+
+[node name="SidewalkTile10" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(747, 119)
+
+[node name="crack_6" parent="World/Tiles/SidewalkTile10" index="5"]
+visible = true
+
+[node name="normal" parent="World/Tiles/SidewalkTile10" index="7"]
+visible = false
+
+[node name="SidewalkTile11" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(1046, -40)
+
+[node name="SidewalkTile12" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(1003, 119)
+
+[node name="SidewalkTile13" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(1304, -40)
+
+[node name="crack_7" parent="World/Tiles/SidewalkTile13" index="6"]
+visible = true
+
+[node name="normal" parent="World/Tiles/SidewalkTile13" index="7"]
+visible = false
+
+[node name="SidewalkTile14" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(1261, 119)
+
+[node name="SidewalkTile15" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(1560, -40)
+
+[node name="crack_4" parent="World/Tiles/SidewalkTile15" index="3"]
+visible = true
+
+[node name="normal" parent="World/Tiles/SidewalkTile15" index="7"]
+visible = false
+
+[node name="SidewalkTile16" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(1517, 119)
+
+[node name="SidewalkTile17" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(1816, -40)
+
+[node name="SidewalkTile18" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(1773, 119)
+
+[node name="SidewalkTile19" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(2076, -40)
+
+[node name="SidewalkTile20" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(2033, 119)
+
+[node name="crack_5" parent="World/Tiles/SidewalkTile20" index="4"]
+visible = true
+
+[node name="normal" parent="World/Tiles/SidewalkTile20" index="7"]
+visible = false
+
+[node name="SidewalkTile21" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(2329, -40)
+
+[node name="SidewalkTile22" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(2286, 119)
+
+[node name="SidewalkTile23" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(2587, -40)
+
+[node name="SidewalkTile24" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(2544, 119)
+
+[node name="crack_7" parent="World/Tiles/SidewalkTile24" index="6"]
+visible = true
+
+[node name="normal" parent="World/Tiles/SidewalkTile24" index="7"]
+visible = false
+
+[node name="SidewalkTile25" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(2843, -40)
+
+[node name="crack_2" parent="World/Tiles/SidewalkTile25" index="1"]
+visible = true
+
+[node name="normal" parent="World/Tiles/SidewalkTile25" index="7"]
+visible = false
+
+[node name="SidewalkTile26" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(2800, 119)
+
+[node name="SidewalkTile27" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(3099, -40)
+
+[node name="crack_7" parent="World/Tiles/SidewalkTile27" index="6"]
+visible = true
+
+[node name="normal" parent="World/Tiles/SidewalkTile27" index="7"]
+visible = false
+
+[node name="SidewalkTile28" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(3056, 119)
+
+[node name="SidewalkTile29" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(3359, -40)
+
+[node name="SidewalkTile30" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(3316, 119)
+
+[node name="SidewalkTile31" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(3612, -40)
+
+[node name="SidewalkTile32" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(3569, 119)
+
+[node name="SidewalkTile33" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(3870, -40)
+
+[node name="SidewalkTile34" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(3827, 119)
+
+[node name="SidewalkTile35" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(4126, -40)
+
+[node name="SidewalkTile36" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(4083, 119)
+
+[node name="SidewalkTile37" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(4382, -40)
+
+[node name="SidewalkTile38" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(4339, 119)
+
+[node name="SidewalkTile39" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(4642, -40)
+
+[node name="SidewalkTile40" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(4599, 119)
+
+[node name="SidewalkTile41" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-5377, -40)
+
+[node name="SidewalkTile42" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-5420, 119)
+
+[node name="SidewalkTile43" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-5119, -40)
+
+[node name="SidewalkTile44" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-5162, 119)
+
+[node name="SidewalkTile45" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-4863, -40)
+
+[node name="SidewalkTile46" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-4906, 119)
+
+[node name="SidewalkTile47" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-4607, -40)
+
+[node name="SidewalkTile48" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-4650, 119)
+
+[node name="SidewalkTile49" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-4347, -40)
+
+[node name="SidewalkTile50" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-4390, 119)
+
+[node name="SidewalkTile51" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-4091, -40)
+
+[node name="SidewalkTile52" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-4134, 119)
+
+[node name="SidewalkTile53" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-3833, -40)
+
+[node name="SidewalkTile54" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-3876, 119)
+
+[node name="SidewalkTile55" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-3577, -40)
+
+[node name="SidewalkTile56" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-3620, 119)
+
+[node name="SidewalkTile57" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-3321, -40)
+
+[node name="SidewalkTile58" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-3364, 119)
+
+[node name="SidewalkTile59" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-3061, -40)
+
+[node name="SidewalkTile60" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-3104, 119)
+
+[node name="SidewalkTile61" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-2808, -40)
+
+[node name="SidewalkTile62" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-2851, 119)
+
+[node name="SidewalkTile63" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-2550, -40)
+
+[node name="SidewalkTile64" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-2593, 119)
+
+[node name="SidewalkTile65" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-2294, -40)
+
+[node name="SidewalkTile66" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-2337, 119)
+
+[node name="SidewalkTile67" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-2038, -40)
+
+[node name="SidewalkTile68" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-2081, 119)
+
+[node name="SidewalkTile69" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-1778, -40)
+
+[node name="SidewalkTile70" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-1821, 119)
+
+[node name="crack_4" parent="World/Tiles/SidewalkTile70" index="3"]
+visible = true
+
+[node name="normal" parent="World/Tiles/SidewalkTile70" index="7"]
+visible = false
+
+[node name="SidewalkTile71" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-1525, -40)
+
+[node name="SidewalkTile72" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-1568, 119)
+
+[node name="SidewalkTile73" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-1267, -40)
+
+[node name="SidewalkTile74" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-1310, 119)
+
+[node name="crack_6" parent="World/Tiles/SidewalkTile74" index="5"]
+visible = true
+
+[node name="normal" parent="World/Tiles/SidewalkTile74" index="7"]
+visible = false
+
+[node name="SidewalkTile75" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-1011, -40)
+
+[node name="SidewalkTile76" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-1054, 119)
+
+[node name="SidewalkTile77" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-755, -40)
+
+[node name="crack_2" parent="World/Tiles/SidewalkTile77" index="1"]
+visible = true
+
+[node name="normal" parent="World/Tiles/SidewalkTile77" index="7"]
+visible = false
+
+[node name="SidewalkTile78" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-798, 119)
+
+[node name="SidewalkTile79" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-495, -40)
+
+[node name="SidewalkTile80" parent="World/Tiles" instance=ExtResource("8_5ql8h")]
+position = Vector2(-538, 119)
+
+[node name="Cracks" type="Node2D" parent="World"]
+
+[node name="crack" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(-747, -78)
+
+[node name="crack2" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(-892, -23)
+
+[node name="crack3" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(-382, 77)
+
+[node name="crack4" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(398, 0)
+
+[node name="crack5" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(347, 132)
+
+[node name="crack6" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(442, 88)
+
+[node name="crack7" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(537, 76)
+
+[node name="crack8" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(664, 84)
+
+[node name="crack9" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(716, 155)
+
+[node name="crack10" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(1317, -125)
+
+[node name="crack11" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(1182, 9)
+
+[node name="crack12" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(1598, -32)
+
+[node name="crack13" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(1875, 124)
+
+[node name="crack14" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(2032, 202)
+
+[node name="crack15" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(1925, 125)
+
+[node name="crack16" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(2408, 183)
+
+[node name="crack17" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(2559, 51)
+
+[node name="crack18" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(3114, -125)
+
+[node name="crack19" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(2860, -94)
+
+[node name="crack20" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(2705, -13)
+
+[node name="crack21" parent="World/Cracks" instance=ExtResource("6_2wpg1")]
+position = Vector2(2974, 18)
+
+[node name="LeftInvisibleWall" type="Node2D" parent="World"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/LeftInvisibleWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/LeftInvisibleWall/StaticBody2D"]
+position = Vector2(-1297, 0)
+shape = SubResource("RectangleShape2D_nvk3q")
+
+[node name="GrassBG" type="Sprite2D" parent="World"]
+modulate = Color(0.0118342, 0.460283, 0.221747, 1)
+z_index = -999
+position = Vector2(0, 352)
+scale = Vector2(5000, 100)
+texture = ExtResource("3_jq6rh")
+
+[node name="SkyBG" type="Sprite2D" parent="World"]
+modulate = Color(0.410765, 0.780665, 0.948493, 1)
+z_index = -1000
+position = Vector2(0, -3214)
+scale = Vector2(5000, 500)
+texture = ExtResource("3_jq6rh")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(0, -169.215)
+position = Vector2(0, -296.77)
 process_callback = 0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
@@ -67,31 +488,16 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(0, -169.215)
+position = Vector2(0, -296.77)
 script = ExtResource("5_wsv48")
 follow_mode = 5
 follow_target = NodePath("../PlayerSide")
 tween_resource = SubResource("Resource_2wpg1")
-follow_offset = Vector2(0, -169.215)
+follow_offset = Vector2(0, -296.77)
 follow_damping = true
 dead_zone_width = 0.08
 dead_zone_height = 0.08
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
-
-[node name="crack" parent="." instance=ExtResource("6_2wpg1")]
-position = Vector2(339, -78)
-
-[node name="crack2" parent="." instance=ExtResource("6_2wpg1")]
-position = Vector2(534, 143)
-
-[node name="crack3" parent="." instance=ExtResource("6_2wpg1")]
-position = Vector2(664, -71)
-
-[node name="crack4" parent="." instance=ExtResource("6_2wpg1")]
-position = Vector2(899, 50)
-
-[node name="crack5" parent="." instance=ExtResource("6_2wpg1")]
-position = Vector2(1345, 1)
 
 [node name="GoToOverworld" type="Node2D" parent="."]
 position = Vector2(3489, 0)
@@ -103,3 +509,17 @@ script = ExtResource("7_wsv48")
 shape = SubResource("RectangleShape2D_2wpg1")
 
 [connection signal="body_entered" from="GoToOverworld/Area2D" to="GoToOverworld" method="_on_area_2d_body_entered"]
+
+[editable path="World/Tiles/SidewalkTile2"]
+[editable path="World/Tiles/SidewalkTile7"]
+[editable path="World/Tiles/SidewalkTile8"]
+[editable path="World/Tiles/SidewalkTile10"]
+[editable path="World/Tiles/SidewalkTile13"]
+[editable path="World/Tiles/SidewalkTile15"]
+[editable path="World/Tiles/SidewalkTile20"]
+[editable path="World/Tiles/SidewalkTile24"]
+[editable path="World/Tiles/SidewalkTile25"]
+[editable path="World/Tiles/SidewalkTile27"]
+[editable path="World/Tiles/SidewalkTile70"]
+[editable path="World/Tiles/SidewalkTile74"]
+[editable path="World/Tiles/SidewalkTile77"]

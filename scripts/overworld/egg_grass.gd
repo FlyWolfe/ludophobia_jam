@@ -20,7 +20,6 @@ func _process(delta: float) -> void:
 				Globals.dialogue_box.open_dialogue_box()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print(body.get_class())
 	if body.is_class("CharacterBody2D"):
 		player_in_grass = true
 		$E_Popup.visible = true
