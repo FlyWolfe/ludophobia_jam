@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bk4aaa5qycrro"]
+
+[ext_resource type="Texture2D" uid="uid://ctcbl3wq6pbcu" path="res://sprites/square.png" id="1_o08rn"]
+[ext_resource type="Script" uid="uid://c4eumxxn5vte4" path="res://scripts/game_dialogue/dialogue_box.gd" id="2_ax8vu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ax8vu"]
+texture = ExtResource("1_o08rn")
+modulate_color = Color(0.140447, 0.140447, 0.140447, 1)
+
+[sub_resource type="Theme" id="Theme_jwbp1"]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_ax8vu")
+
+[node name="DialogueBox" type="PanelContainer" node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(500, 300)
+offset_right = 750.0
+offset_bottom = 400.0
+theme = SubResource("Theme_jwbp1")
+script = ExtResource("2_ax8vu")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(700, 350)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Sample Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

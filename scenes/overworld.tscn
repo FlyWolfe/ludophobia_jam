@@ -1,14 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://bnt11gqa36w6f"]
+[gd_scene load_steps=18 format=3 uid="uid://bnt11gqa36w6f"]
 
 [ext_resource type="PackedScene" uid="uid://5pm3v83tw31q" path="res://objects/player.tscn" id="1_m1b5j"]
-[ext_resource type="Script" uid="uid://bb5aau0fedosc" path="res://scripts/overworld/player.gd" id="2_16ktt"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_3gvrs"]
+[ext_resource type="PackedScene" uid="uid://bk4aaa5qycrro" path="res://objects/dialogue_box.tscn" id="3_nesqq"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_eab5i"]
 [ext_resource type="Script" uid="uid://dilgy1qpevj0t" path="res://scripts/overworld/pedometer.gd" id="4_fkyvp"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_fkyvp"]
 [ext_resource type="PackedScene" uid="uid://brkxoqdvu1nup" path="res://objects/petogatchi.tscn" id="7_fkyvp"]
 [ext_resource type="Texture2D" uid="uid://ctcbl3wq6pbcu" path="res://sprites/square.png" id="8_qjxaj"]
 [ext_resource type="PackedScene" uid="uid://bmbr47pgax2ck" path="res://objects/egg_grass.tscn" id="9_e184d"]
+[ext_resource type="PackedScene" uid="uid://nwnpr1wlripa" path="res://objects/grocery_store.tscn" id="9_nesqq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3gvrs"]
 
@@ -37,11 +38,6 @@ size = Vector2(320, 320)
 
 [node name="Overworld" type="Node2D"]
 
-[node name="Player" parent="." node_paths=PackedStringArray("pedometer") instance=ExtResource("1_m1b5j")]
-z_index = 1
-script = ExtResource("2_16ktt")
-pedometer = NodePath("../CanvasLayer/Pedometer_Container/Pedometer")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Pedometer_Container" type="PanelContainer" parent="CanvasLayer"]
@@ -65,6 +61,21 @@ offset_top = -392.0
 offset_right = -44.0
 offset_bottom = -38.0
 
+[node name="DialogueBox" parent="CanvasLayer" instance=ExtResource("3_nesqq")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -378.055
+offset_right = 350.0
+offset_bottom = -28.0549
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 process_callback = 0
@@ -79,7 +90,7 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 top_level = true
 script = ExtResource("4_eab5i")
 follow_mode = 5
-follow_target = NodePath("../Player")
+follow_target = NodePath("../WorldObjects/Player")
 tween_resource = SubResource("Resource_qjxaj")
 follow_damping = true
 dead_zone_width = 0.08
@@ -92,41 +103,52 @@ scale = Vector2(5, 5)
 texture = SubResource("NoiseTexture2D_fkyvp")
 
 [node name="WorldObjects" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="HouseTemp2" type="Node2D" parent="WorldObjects"]
+y_sort_enabled = true
 position = Vector2(524, -230)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="WorldObjects/HouseTemp2"]
+z_index = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldObjects/HouseTemp2/StaticBody2D"]
 shape = SubResource("RectangleShape2D_qjxaj")
 
 [node name="Sprite2D" type="Sprite2D" parent="WorldObjects/HouseTemp2"]
+z_index = 1
 scale = Vector2(20, 20)
 texture = ExtResource("8_qjxaj")
 
-[node name="Egg Hunt" type="Node2D" parent="WorldObjects"]
+[node name="Player" parent="WorldObjects" node_paths=PackedStringArray("pedometer") instance=ExtResource("1_m1b5j")]
+pedometer = NodePath("../../CanvasLayer/Pedometer_Container/Pedometer")
 
-[node name="EggGrass" parent="WorldObjects/Egg Hunt" instance=ExtResource("9_e184d")]
+[node name="EggGrass" parent="WorldObjects" instance=ExtResource("9_e184d")]
 position = Vector2(-765, -394)
 
-[node name="EggGrass2" parent="WorldObjects/Egg Hunt" instance=ExtResource("9_e184d")]
+[node name="EggGrass2" parent="WorldObjects" instance=ExtResource("9_e184d")]
 position = Vector2(-484, -413)
+contains_egg = true
 
-[node name="EggGrass3" parent="WorldObjects/Egg Hunt" instance=ExtResource("9_e184d")]
+[node name="EggGrass3" parent="WorldObjects" instance=ExtResource("9_e184d")]
 position = Vector2(-795, -121)
 
-[node name="EggGrass4" parent="WorldObjects/Egg Hunt" instance=ExtResource("9_e184d")]
+[node name="EggGrass4" parent="WorldObjects" instance=ExtResource("9_e184d")]
 position = Vector2(-611, -250)
 
-[node name="EggGrass5" parent="WorldObjects/Egg Hunt" instance=ExtResource("9_e184d")]
+[node name="EggGrass5" parent="WorldObjects" instance=ExtResource("9_e184d")]
 position = Vector2(-635, -119)
+contains_egg = true
 
-[node name="EggGrass6" parent="WorldObjects/Egg Hunt" instance=ExtResource("9_e184d")]
+[node name="EggGrass6" parent="WorldObjects" instance=ExtResource("9_e184d")]
 position = Vector2(-397, -293)
 
-[node name="EggGrass7" parent="WorldObjects/Egg Hunt" instance=ExtResource("9_e184d")]
+[node name="EggGrass7" parent="WorldObjects" instance=ExtResource("9_e184d")]
 position = Vector2(-635, -490)
 
-[node name="EggGrass8" parent="WorldObjects/Egg Hunt" instance=ExtResource("9_e184d")]
+[node name="EggGrass8" parent="WorldObjects" instance=ExtResource("9_e184d")]
 position = Vector2(-871, -261)
+contains_egg = true
+
+[node name="GroceryStore" parent="WorldObjects" instance=ExtResource("9_nesqq")]
+position = Vector2(340, -1437)
