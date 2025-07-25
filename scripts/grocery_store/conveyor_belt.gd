@@ -2,8 +2,6 @@ extends Node2D
 
 @export var starting_columns: int = 2
 @export var max_columns: int = 30
-@export var all_tiles: Array[GroceryItem]
-@export var amount_of_tile: Array[int]
 @export var conveyor_start: Vector2i = Vector2i(-9, -2)
 @export var conveyor_end: Vector2i = Vector2i(8, 1)
 
@@ -12,7 +10,7 @@ extends Node2D
 
 @export var x_tile: Vector2i = Vector2i(7, 5)
 
-@export var conveyor_move_rate: float = 0.5
+@export var conveyor_move_rate: float = 0.75
 
 var columns: int
 var rows: int
@@ -40,10 +38,8 @@ func _ready():
 	columns_left = max_columns
 	game_end = false
 	
-	for i in range(all_tiles.size()):
-		for j in range(amount_of_tile[i]):
-			grocery_items.append(all_tiles[i])
-			print("TADA")
+	for i in range(Globals.groceries.size()):
+		grocery_items.append(Globals.groceries[i])
 	var rand_index = randi() % grocery_items.size()
 	current_item = grocery_items[rand_index]
 	grocery_items.remove_at(rand_index)

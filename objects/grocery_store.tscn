@@ -1,8 +1,285 @@
-[gd_scene load_steps=2 format=3 uid="uid://nwnpr1wlripa"]
+[gd_scene load_steps=19 format=3 uid="uid://nwnpr1wlripa"]
 
 [ext_resource type="Texture2D" uid="uid://ctcbl3wq6pbcu" path="res://sprites/square.png" id="1_4hqwo"]
+[ext_resource type="Texture2D" uid="uid://juqdmw0fe2vm" path="res://sprites/store.png" id="2_5fg3p"]
+[ext_resource type="PackedScene" uid="uid://cehom4rkd6dnh" path="res://objects/grocery_spot.tscn" id="2_ljn3g"]
+[ext_resource type="Resource" uid="uid://c03nbv30toujt" path="res://groceries/crackers.tres" id="4_ef80l"]
+[ext_resource type="Resource" uid="uid://b1iq0vdplebiq" path="res://groceries/banana.tres" id="5_3y5vi"]
+[ext_resource type="Texture2D" uid="uid://b4h621kwkldmd" path="res://sprites/Rezbow silly.png" id="6_3y5vi"]
+[ext_resource type="Script" uid="uid://n2dbol0ychlc" path="res://scripts/grocery_store/checkout.gd" id="6_bfh7g"]
+[ext_resource type="Resource" uid="uid://bhx3ffygre6i0" path="res://groceries/sausage.tres" id="6_kis3l"]
+[ext_resource type="Texture2D" uid="uid://ebp0kj008yly" path="res://sprites/E_to_interact.png" id="8_8n31w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hqwo"]
+size = Vector2(4000, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5fg3p"]
+size = Vector2(4000, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljn3g"]
+size = Vector2(2080, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ef80l"]
+size = Vector2(305, 1244)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88175"]
+size = Vector2(319.5, 1298)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3y5vi"]
+size = Vector2(1035, 172)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bfh7g"]
+size = Vector2(160, 320)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bfh7g"]
+radius = 51.17
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8n31w"]
+size = Vector2(86, 264)
 
 [node name="GroceryStore" type="Node2D"]
 
-[node name="TopWall" type="Sprite2D" parent="."]
+[node name="TopWall" type="Node2D" parent="."]
+position = Vector2(0, -1000)
+
+[node name="Sprite" type="Sprite2D" parent="TopWall"]
+modulate = Color(0.509286, 0.509286, 0.509286, 1)
+scale = Vector2(250, 5)
 texture = ExtResource("1_4hqwo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TopWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall/StaticBody2D"]
+shape = SubResource("RectangleShape2D_4hqwo")
+
+[node name="BottomWall" type="Node2D" parent="."]
+position = Vector2(-1086, 1000)
+scale = Vector2(0.45, 1)
+
+[node name="Sprite" type="Sprite2D" parent="BottomWall"]
+modulate = Color(0.509286, 0.509286, 0.509286, 1)
+scale = Vector2(250, 5)
+texture = ExtResource("1_4hqwo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BottomWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall/StaticBody2D"]
+shape = SubResource("RectangleShape2D_5fg3p")
+
+[node name="BottomWall2" type="Node2D" parent="."]
+position = Vector2(1094, 1000)
+scale = Vector2(0.45, 1)
+
+[node name="Sprite" type="Sprite2D" parent="BottomWall2"]
+modulate = Color(0.509286, 0.509286, 0.509286, 1)
+scale = Vector2(250, 5)
+texture = ExtResource("1_4hqwo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BottomWall2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall2/StaticBody2D"]
+shape = SubResource("RectangleShape2D_5fg3p")
+
+[node name="LeftWall" type="Node2D" parent="."]
+position = Vector2(-2018, 0)
+rotation = -1.5708
+
+[node name="Sprite" type="Sprite2D" parent="LeftWall"]
+modulate = Color(0.509286, 0.509286, 0.509286, 1)
+scale = Vector2(130, 5)
+texture = ExtResource("1_4hqwo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LeftWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ljn3g")
+
+[node name="RightWall" type="Node2D" parent="."]
+position = Vector2(2028, 0)
+rotation = -1.5708
+
+[node name="Sprite" type="Sprite2D" parent="RightWall"]
+modulate = Color(0.509286, 0.509286, 0.509286, 1)
+scale = Vector2(130, 5)
+texture = ExtResource("1_4hqwo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RightWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ljn3g")
+
+[node name="Shelf" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Shelf"]
+position = Vector2(-1365, -63)
+texture = ExtResource("2_5fg3p")
+region_enabled = true
+region_rect = Rect2(322, 251, 385, 1249)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Shelf"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf/StaticBody2D"]
+position = Vector2(-1357.5, -61)
+shape = SubResource("RectangleShape2D_ef80l")
+
+[node name="GrocerySpot" parent="Shelf" instance=ExtResource("2_ljn3g")]
+position = Vector2(-1494, -185)
+item = ExtResource("4_ef80l")
+
+[node name="GrocerySpot2" parent="Shelf" instance=ExtResource("2_ljn3g")]
+position = Vector2(-1494, -442)
+item = ExtResource("4_ef80l")
+
+[node name="GrocerySpot3" parent="Shelf" instance=ExtResource("2_ljn3g")]
+position = Vector2(-1494, 104)
+item = ExtResource("4_ef80l")
+
+[node name="GrocerySpot4" parent="Shelf" instance=ExtResource("2_ljn3g")]
+position = Vector2(-1241, 166)
+item = ExtResource("4_ef80l")
+
+[node name="GrocerySpot5" parent="Shelf" instance=ExtResource("2_ljn3g")]
+position = Vector2(-1241, -113)
+item = ExtResource("4_ef80l")
+
+[node name="GrocerySpot6" parent="Shelf" instance=ExtResource("2_ljn3g")]
+position = Vector2(-1241, -329)
+item = ExtResource("4_ef80l")
+
+[node name="GrocerySpot7" parent="Shelf" instance=ExtResource("2_ljn3g")]
+position = Vector2(-1241, -541)
+item = ExtResource("4_ef80l")
+
+[node name="GrocerySpot8" parent="Shelf" instance=ExtResource("2_ljn3g")]
+position = Vector2(-1358, -670)
+item = ExtResource("4_ef80l")
+
+[node name="GrocerySpot9" parent="Shelf" instance=ExtResource("2_ljn3g")]
+position = Vector2(-1358, 517)
+item = ExtResource("4_ef80l")
+
+[node name="Shelf2" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Shelf2"]
+position = Vector2(1271, -63)
+texture = ExtResource("2_5fg3p")
+region_enabled = true
+region_rect = Rect2(889, 178, 376, 1322)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Shelf2"]
+position = Vector2(1274, -36)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf2/StaticBody2D"]
+position = Vector2(-7.25, -27)
+shape = SubResource("RectangleShape2D_88175")
+
+[node name="GrocerySpot" parent="Shelf2" instance=ExtResource("2_ljn3g")]
+position = Vector2(1414, 119)
+item = ExtResource("5_3y5vi")
+
+[node name="GrocerySpot2" parent="Shelf2" instance=ExtResource("2_ljn3g")]
+position = Vector2(1414, 333)
+item = ExtResource("5_3y5vi")
+
+[node name="GrocerySpot3" parent="Shelf2" instance=ExtResource("2_ljn3g")]
+position = Vector2(1414, -119)
+item = ExtResource("5_3y5vi")
+
+[node name="GrocerySpot4" parent="Shelf2" instance=ExtResource("2_ljn3g")]
+position = Vector2(1414, -417)
+item = ExtResource("5_3y5vi")
+
+[node name="GrocerySpot5" parent="Shelf2" instance=ExtResource("2_ljn3g")]
+position = Vector2(1279, -700)
+item = ExtResource("5_3y5vi")
+
+[node name="GrocerySpot6" parent="Shelf2" instance=ExtResource("2_ljn3g")]
+position = Vector2(1140, -431)
+item = ExtResource("5_3y5vi")
+
+[node name="GrocerySpot7" parent="Shelf2" instance=ExtResource("2_ljn3g")]
+position = Vector2(1140, -140)
+item = ExtResource("5_3y5vi")
+
+[node name="GrocerySpot8" parent="Shelf2" instance=ExtResource("2_ljn3g")]
+position = Vector2(1140, 154)
+item = ExtResource("5_3y5vi")
+
+[node name="GrocerySpot9" parent="Shelf2" instance=ExtResource("2_ljn3g")]
+position = Vector2(1259, 575)
+item = ExtResource("5_3y5vi")
+
+[node name="Shelf3" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Shelf3"]
+position = Vector2(0, -851)
+rotation = -1.5708
+texture = ExtResource("2_5fg3p")
+region_enabled = true
+region_rect = Rect2(1369, 316, 196, 1042)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Shelf3"]
+position = Vector2(0, -813)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf3/StaticBody2D"]
+position = Vector2(-4.5, -60)
+shape = SubResource("RectangleShape2D_3y5vi")
+
+[node name="GrocerySpot" parent="Shelf3" instance=ExtResource("2_ljn3g")]
+position = Vector2(-417, -802)
+item = ExtResource("6_kis3l")
+
+[node name="GrocerySpot2" parent="Shelf3" instance=ExtResource("2_ljn3g")]
+position = Vector2(-177, -802)
+item = ExtResource("6_kis3l")
+
+[node name="GrocerySpot3" parent="Shelf3" instance=ExtResource("2_ljn3g")]
+position = Vector2(327, -802)
+item = ExtResource("6_kis3l")
+
+[node name="GrocerySpot4" parent="Shelf3" instance=ExtResource("2_ljn3g")]
+position = Vector2(96, -802)
+item = ExtResource("6_kis3l")
+
+[node name="Checkout" type="Node2D" parent="."]
+position = Vector2(-295, 480)
+script = ExtResource("6_bfh7g")
+
+[node name="Counter" type="Node2D" parent="Checkout"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Checkout/Counter"]
+modulate = Color(0.439049, 0.439049, 0.439049, 1)
+scale = Vector2(10, 20)
+texture = ExtResource("1_4hqwo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Checkout/Counter"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkout/Counter/StaticBody2D"]
+shape = SubResource("RectangleShape2D_bfh7g")
+
+[node name="Cashier" type="Node2D" parent="Checkout"]
+position = Vector2(-132, -13)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Checkout/Cashier"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkout/Cashier/StaticBody2D"]
+shape = SubResource("CircleShape2D_bfh7g")
+
+[node name="Sprite2D" type="Sprite2D" parent="Checkout/Cashier"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_3y5vi")
+
+[node name="Area2D" type="Area2D" parent="Checkout"]
+position = Vector2(80, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkout/Area2D"]
+shape = SubResource("RectangleShape2D_8n31w")
+
+[node name="E_Popup" type="Sprite2D" parent="Checkout"]
+z_index = 5
+position = Vector2(0, -89)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("8_8n31w")
+
+[connection signal="body_entered" from="Checkout/Area2D" to="Checkout" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Checkout/Area2D" to="Checkout" method="_on_area_2d_body_exited"]

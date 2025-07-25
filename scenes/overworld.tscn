@@ -23,7 +23,7 @@ transition = 0
 ease = 2
 
 [sub_resource type="Gradient" id="Gradient_3gvrs"]
-colors = PackedColorArray(0.0398984, 0.219007, 0.151582, 1, 0.249724, 0.447053, 0.270758, 1)
+colors = PackedColorArray(0.166127, 0.343392, 0.171412, 1, 0.353612, 0.589839, 0.235118, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_eab5i"]
 
@@ -152,3 +152,4 @@ contains_egg = true
 
 [node name="GroceryStore" parent="WorldObjects" instance=ExtResource("9_nesqq")]
 position = Vector2(340, -1437)
+scale = Vector2(0.5, 0.5)
